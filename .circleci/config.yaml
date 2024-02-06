@@ -1,0 +1,20 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:8-jdk  # Use Java 8 environment
+    steps:
+      - checkout  # Checkout the code
+      - run:
+          name: Run unit tests with Maven
+          command: mvn test  # Execute unit tests with Maven
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only: master  # Run only on the master branch
