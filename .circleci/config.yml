@@ -3,12 +3,12 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/openjdk:8-jdk  # Use Java 8 environment
+      - image: circleci/openjdk:8-jdk
     steps:
-      - checkout  # Checkout the code
+      - checkout
       - run:
           name: Run unit tests with Maven
-          command: mvn test  # Execute unit tests with Maven
+          command: mvn test
 
 orbs:
   codecov: codecov/codecov@4.0.1
@@ -20,8 +20,8 @@ workflows:
       - build:
           filters:
             branches:
-              only: master  # Run only on the master branch
+              only: master
+
   upload-to-codecov:
     jobs:
-      - checkout
       - codecov/upload
