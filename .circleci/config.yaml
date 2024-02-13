@@ -10,6 +10,9 @@ jobs:
           name: Run unit tests with Maven
           command: mvn test  # Execute unit tests with Maven
 
+orbs:
+  codecov: codecov/codecov@4.0.1
+
 workflows:
   version: 2
   build:
@@ -18,3 +21,7 @@ workflows:
           filters:
             branches:
               only: master  # Run only on the master branch
+  upload-to-codecov:
+    jobs:
+      - checkout
+      - codecov/upload
