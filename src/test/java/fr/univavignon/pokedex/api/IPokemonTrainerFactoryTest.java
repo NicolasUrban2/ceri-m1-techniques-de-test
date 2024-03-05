@@ -12,7 +12,7 @@ public class IPokemonTrainerFactoryTest {
     IPokemonTrainerFactory pokemonTrainerFactory = mock(IPokemonTrainerFactory.class);
 
     @BeforeEach
-    public void setUp() throws Exception {
+    public void setUp() {
         pokemonTrainerFactory = mock(IPokemonTrainerFactory.class);
     }
 
