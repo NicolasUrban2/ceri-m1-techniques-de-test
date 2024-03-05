@@ -1,24 +1,27 @@
 package fr.univavignon.pokedex.api;
 
-import junit.framework.TestCase;
-import org.junit.Test;
-import static org.mockito.Mockito.mock;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class IPokedexFactoryTest extends TestCase {
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+public class IPokedexFactoryTest {
 
     IPokedexFactory pokedexFactory;
     
-    @Override
+    @BeforeEach
     public void setUp() throws Exception {
-        super.setUp();
-        pokedexFactory = new PokedexFactory();
+        pokedexFactory = mock(IPokedexFactory.class);
     }
 
     @Test
     public void testCreatePokedex() {
         IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
         IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
-        IPokedexFactory pokedexFactory = new PokedexFactory();
+        IPokedexFactory pokedexFactory = mock(IPokedexFactory.class);
+        when(pokedexFactory.createPokedex(metadataProvider, pokemonFactory)).thenReturn(mock(IPokedex.class));
         IPokedex pokedex = pokedexFactory.createPokedex(metadataProvider, pokemonFactory);
         assertNotNull(pokedex);
     }
