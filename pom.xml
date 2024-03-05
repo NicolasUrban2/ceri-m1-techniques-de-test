@@ -51,6 +51,7 @@ http://maven.apache.org/maven-v4_0_0.xsd"
                     </execution>
                     <execution>
                         <id>report</id>
+                        <phase>test</phase>
                         <goals>
                             <goal>report</goal>
                         </goals>
