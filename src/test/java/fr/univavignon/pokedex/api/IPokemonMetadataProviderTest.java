@@ -13,7 +13,7 @@ public class IPokemonMetadataProviderTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-    pokemonMetadataProvider = mock(PokemonMetadataProvider.class);
+    pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
     }
 
     @Test
