@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 
 public class IPokemonMetadataProviderTest {
 
-    IPokemonMetadataProvider pokemonMetadataProvider;
+    IPokemonMetadataProvider pokemonMetadataProvider = mock(IPokemonMetadataProvider.class);
 
     @BeforeEach
     public void setUp() throws Exception {

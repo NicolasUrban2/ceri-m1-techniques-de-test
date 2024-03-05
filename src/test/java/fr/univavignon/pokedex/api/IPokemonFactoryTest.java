@@ -8,7 +8,7 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class IPokemonFactoryTest {
-    IPokemonFactory pokemonFactory;
+    IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);;
     @BeforeEach
     public void setUp() throws Exception {
         pokemonFactory = mock(IPokemonFactory.class);

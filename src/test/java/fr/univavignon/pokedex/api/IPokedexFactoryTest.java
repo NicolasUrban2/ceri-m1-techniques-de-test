@@ -9,7 +9,7 @@ import static org.mockito.Mockito.when;
 
 public class IPokedexFactoryTest {
 
-    IPokedexFactory pokedexFactory;
+    IPokedexFactory pokedexFactory = mock(IPokedexFactory.class);
     
     @BeforeEach
     public void setUp() throws Exception {

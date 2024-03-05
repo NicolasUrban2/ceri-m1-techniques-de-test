@@ -11,8 +11,8 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class IPokedexTest {
-    private IPokedex pokedex;
-    private Pokemon pokemon;
+    private IPokedex pokedex = mock(IPokedex.class);
+    private Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
 
     @BeforeEach
     public void setUp() {

@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 public class IPokemonTrainerFactoryTest {
-    IPokemonTrainerFactory pokemonTrainerFactory;
+    IPokemonTrainerFactory pokemonTrainerFactory = mock(IPokemonTrainerFactory.class);
 
     @BeforeEach
     public void setUp() throws Exception {
