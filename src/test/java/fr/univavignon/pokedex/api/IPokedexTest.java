@@ -14,8 +14,9 @@ public class IPokedexTest {
     private IPokedex pokedex = new Pokedex(metadataProvider, pokemonFactory);
     private Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
 
-    @Before
+    @BeforeEach
     public void setUp() {
+        System.out.println("passe");
         pokedex = new Pokedex(metadataProvider, pokemonFactory);
         pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
     }
