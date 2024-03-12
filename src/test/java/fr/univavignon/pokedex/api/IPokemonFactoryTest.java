@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class IPokemonFactoryTest {
-    IPokemonFactory pokemonFactory;
+    IPokemonFactory pokemonFactory = new PokemonFactory();
     @BeforeEach
     public void setUp() {
         pokemonFactory = new PokemonFactory();

@@ -5,15 +5,13 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class IPokedexTest {
     private IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
     private IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
-    private IPokedex pokedex;
+    private IPokedex pokedex = new Pokedex(metadataProvider, pokemonFactory);
     private Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
 
     @BeforeEach

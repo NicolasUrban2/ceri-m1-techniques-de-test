@@ -8,7 +8,7 @@ import static org.mockito.Mockito.mock;
 
 public class IPokedexFactoryTest {
 
-    IPokedexFactory pokedexFactory;
+    IPokedexFactory pokedexFactory = new PokedexFactory();
     
     @BeforeEach
     public void setUp() {

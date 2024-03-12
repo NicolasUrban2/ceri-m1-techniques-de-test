@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class IPokemonMetadataProviderTest {
 
-    IPokemonMetadataProvider pokemonMetadataProvider;
+    IPokemonMetadataProvider pokemonMetadataProvider = new PokemonMetadataProvider();
 
     @BeforeEach
     public void setUp() {
