@@ -22,6 +22,7 @@ public class IPokedexTest {
 
     @Test
     public void testSize() {
+        pokedex = new Pokedex(metadataProvider, pokemonFactory);
         assertEquals(0, pokedex.size());
         pokedex.addPokemon(pokemon);
         assertEquals(1, pokedex.size());
