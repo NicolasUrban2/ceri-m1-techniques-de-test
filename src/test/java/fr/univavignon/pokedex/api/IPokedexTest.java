@@ -14,7 +14,7 @@ public class IPokedexTest {
     private IPokedex pokedex = new Pokedex(metadataProvider, pokemonFactory);
     private Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
 
-    @BeforeEach
+    @Before
     public void setUp() {
         pokedex = new Pokedex(metadataProvider, pokemonFactory);
         pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
@@ -22,7 +22,6 @@ public class IPokedexTest {
 
     @Test
     public void testSize() {
-        pokedex = new Pokedex(metadataProvider, pokemonFactory);
         assertEquals(0, pokedex.size());
         pokedex.addPokemon(pokemon);
         assertEquals(1, pokedex.size());
