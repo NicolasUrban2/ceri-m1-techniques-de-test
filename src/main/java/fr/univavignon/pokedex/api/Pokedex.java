@@ -5,9 +5,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Pokedex implements IPokedex{
-    private IPokemonMetadataProvider pokemonMetadataProvider;
-    private IPokemonFactory pokemonFactory;
-    private List<Pokemon> pokemons = new ArrayList<>();
+    private final IPokemonMetadataProvider pokemonMetadataProvider;
+    private final IPokemonFactory pokemonFactory;
+    private final List<Pokemon> pokemons = new ArrayList<>();
 
     public Pokedex(IPokemonMetadataProvider pokemonMetadataProvider, IPokemonFactory pokemonFactory) {
         this.pokemonMetadataProvider = pokemonMetadataProvider;
@@ -52,6 +52,9 @@ public class Pokedex implements IPokedex{
         try {
             PokemonMetadata pokemonMetadata = this.getPokemonMetadata(index);
             Pokemon incompletePokemon = this.pokemonFactory.createPokemon(index, cp, hp, dust, candy);
+            if(incompletePokemon == null) {
+                return null;
+            }
             return new Pokemon(
                     incompletePokemon.getIndex(),
                     pokemonMetadata.getName(),
@@ -62,7 +65,7 @@ public class Pokedex implements IPokedex{
                     incompletePokemon.getHp(),
                     incompletePokemon.getDust(),
                     incompletePokemon.getCandy(),
-                    0
+                    56
             );
         } catch (PokedexException e) {
             System.err.println(e.getMessage());

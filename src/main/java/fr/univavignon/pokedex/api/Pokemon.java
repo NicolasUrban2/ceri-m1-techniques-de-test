@@ -79,5 +79,18 @@ public final class Pokemon extends PokemonMetadata {
 	public double getIv() {
 		return iv;
 	}
-	
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Pokemon pokemon = (Pokemon) o;
+
+		if (cp != pokemon.cp) return false;
+		if (hp != pokemon.hp) return false;
+		if (dust != pokemon.dust) return false;
+		if (candy != pokemon.candy) return false;
+		return Double.compare(pokemon.iv, iv) == 0;
+	}
 }

@@ -24,10 +24,12 @@ public class PokemonTrainerFactoryTest {
         pokemonTrainerFactory.setMetadataProvider(metadataProvider);
 
         IPokedexFactory pokedexFactory = mock(IPokedexFactory.class);
-        when(pokedexFactory.createPokedex(metadataProvider, pokemonFactory)).thenReturn(mock(IPokedex.class));
+        IPokedex pokedex = mock(IPokedex.class);
+        when(pokedexFactory.createPokedex(metadataProvider, pokemonFactory)).thenReturn(pokedex);
         PokemonTrainer trainer = pokemonTrainerFactory.createTrainer("Michel", Team.INSTINCT, pokedexFactory);
         assertNotNull(trainer);
         assertEquals("Michel", trainer.getName());
         assertEquals(Team.INSTINCT, trainer.getTeam());
+        assertEquals(pokedex, trainer.getPokedex());
     }
 }

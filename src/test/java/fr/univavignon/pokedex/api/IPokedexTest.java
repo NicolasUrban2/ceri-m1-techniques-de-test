@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.List;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class IPokedexTest {
     private IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
@@ -16,7 +17,6 @@ public class IPokedexTest {
 
     @BeforeEach
     public void setUp() {
-        System.out.println("passe");
         pokedex = new Pokedex(metadataProvider, pokemonFactory);
         pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
     }
@@ -69,5 +69,35 @@ public class IPokedexTest {
         pokedex.addPokemon(pokemon);
         pokedex.addPokemon(farfuret);
         assertEquals(pokemonList, pokedex.getPokemons(PokemonComparators.CP));
+    }
+
+    @Test
+    public void testCreatePokemon() throws PokedexException {
+        when(metadataProvider.getPokemonMetadata(pokemon.getIndex()))
+                .thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
+        when(pokemonFactory.createPokemon(pokemon.getIndex(), pokemon.getCp(), pokemon.getHp(), pokemon.getDust(), pokemon.getCandy()))
+                .thenReturn(new Pokemon(pokemon.getIndex(), "", 0, 0, 0, pokemon.getCp(), pokemon.getHp(), pokemon.getDust(), pokemon.getCandy(), 0));
+        Pokemon createdPokemon = pokedex.createPokemon(pokemon.getIndex(), pokemon.getCp(), pokemon.getHp(), pokemon.getDust(), pokemon.getCandy());
+        assertEquals(pokemon, createdPokemon);
+    }
+
+    @Test
+    public void testCreatePokemonReturnsNullWhenPokemonFactoryReturnsNull() throws PokedexException {
+        when(metadataProvider.getPokemonMetadata(pokemon.getIndex()))
+                .thenReturn(new PokemonMetadata(0, "Bulbizarre", 126, 126, 90));
+        when(pokemonFactory.createPokemon(pokemon.getIndex(), pokemon.getCp(), pokemon.getHp(), pokemon.getDust(), pokemon.getCandy()))
+                .thenReturn(null);
+        Pokemon createdPokemon = pokedex.createPokemon(pokemon.getIndex(), pokemon.getCp(), pokemon.getHp(), pokemon.getDust(), pokemon.getCandy());
+        assertNull(createdPokemon);
+    }
+
+    @Test
+    public void testCreatePokemonReturnsNullWhenMEtadataProvidersThrowsAnException() throws PokedexException {
+        when(metadataProvider.getPokemonMetadata(pokemon.getIndex()))
+                .thenThrow(new PokedexException("No related pokemon metadata found"));
+        when(pokemonFactory.createPokemon(pokemon.getIndex(), pokemon.getCp(), pokemon.getHp(), pokemon.getDust(), pokemon.getCandy()))
+                .thenReturn(new Pokemon(pokemon.getIndex(), "", 0, 0, 0, pokemon.getCp(), pokemon.getHp(), pokemon.getDust(), pokemon.getCandy(), 0));
+        Pokemon createdPokemon = pokedex.createPokemon(pokemon.getIndex(), pokemon.getCp(), pokemon.getHp(), pokemon.getDust(), pokemon.getCandy());
+        assertNull(createdPokemon);
     }
 }
