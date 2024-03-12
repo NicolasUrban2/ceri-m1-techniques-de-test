@@ -11,43 +11,39 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class IPokedexTest {
-    private IPokedex pokedex = mock(IPokedex.class);
+    private IPokemonMetadataProvider metadataProvider = mock(IPokemonMetadataProvider.class);
+    private IPokemonFactory pokemonFactory = mock(IPokemonFactory.class);
+    private IPokedex pokedex;
     private Pokemon pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
 
     @BeforeEach
     public void setUp() {
-        pokedex = mock(IPokedex.class);
+        pokedex = new Pokedex(metadataProvider, pokemonFactory);
         pokemon = new Pokemon(0, "Bulbizarre", 126, 127, 90, 613, 64, 4000, 4, 56);
     }
 
     @Test
     public void testSize() {
-        when(pokedex.size()).thenReturn(0);
         assertEquals(0, pokedex.size());
         pokedex.addPokemon(pokemon);
-        when(pokedex.size()).thenReturn(1);
         assertEquals(1, pokedex.size());
     }
 
     @Test
     public void testAddPokemonIndex() {
-        when(pokedex.addPokemon(pokemon)).thenReturn(0);
         int index = pokedex.addPokemon(pokemon);
         assertEquals(0, index);
     }
 
     @Test
     public void testGetPokemon() throws PokedexException {
-        when(pokedex.addPokemon(pokemon)).thenReturn(0);
         int index = pokedex.addPokemon(pokemon);
-        when(pokedex.getPokemon(index)).thenReturn(pokemon);
         Pokemon retrievedPokemon = pokedex.getPokemon(index);
         assertEquals(pokemon, retrievedPokemon);
     }
 
+    @Test
     public void testGetPokemonThrowsException() throws PokedexException {
-        when(pokedex.getPokemon(100)).thenThrow(new PokedexException("Out of bound index"));
-
         assertThrows(PokedexException.class, () -> {
                 pokedex.getPokemon(100);
         });
@@ -57,20 +53,22 @@ public class IPokedexTest {
     public void testGetPokemons() {
         List<Pokemon> pokemonList = new ArrayList<>();
         pokemonList.add(pokemon);
-        when(pokedex.addPokemon(pokemon)).thenReturn(0);
         pokedex.addPokemon(pokemon);
-        when(pokedex.getPokemons()).thenReturn(pokemonList);
         assertEquals(pokemonList, pokedex.getPokemons());
     }
 
     @Test
     public void testGetPokemonsWithComparator() {
+        Pokemon farfuret = new Pokemon(156, "Farfuret", 1000, 1000, 9999, 50, 50, 50, 50, 100);
+
         List<Pokemon> pokemonList = new ArrayList<>();
         pokemonList.add(pokemon);
-        Comparator<Pokemon> comparator = Comparator.comparing(Pokemon::getName);
-        when(pokedex.addPokemon(pokemon)).thenReturn(0);
+        pokemonList.add(farfuret);
+
+        pokemonList.sort(PokemonComparators.CP);
+
         pokedex.addPokemon(pokemon);
-        when(pokedex.getPokemons(comparator)).thenReturn(pokemonList);
-        assertEquals(pokemonList, pokedex.getPokemons(comparator));
+        pokedex.addPokemon(farfuret);
+        assertEquals(pokemonList, pokedex.getPokemons(PokemonComparators.CP));
     }
 }
