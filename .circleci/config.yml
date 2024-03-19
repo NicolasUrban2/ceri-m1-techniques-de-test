@@ -12,6 +12,12 @@ jobs:
       - run:
           name: Run Checkstyle
           command: mvn checkstyle:check
+      - run:
+          name: Make docs
+          command: mvn javadoc:javadoc
+      - persist_to_workspace:
+          root: target/site/apidocs
+          paths: apidocs
       - codecov/upload
 
 orbs:
