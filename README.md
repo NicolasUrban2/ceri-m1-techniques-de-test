@@ -14,3 +14,6 @@ Contient un objet IPokemonMetadataProvider et IPokemonFactory. Pour la méthode 
 ## CircleCi
 
 [![NicolasUrban2](https://circleci.com/gh/NicolasUrban2/ceri-m1-techniques-de-test.svg?style=svg)](https://app.circleci.com/pipelines/github/NicolasUrban2)
+
+## Checkstyle
+[![Checkstyle](https://img.shields.io/badge/Checkstyle-Passed-brightgreen)](/target/site/checkstyle.html)
