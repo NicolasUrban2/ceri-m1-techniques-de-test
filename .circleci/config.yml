@@ -9,6 +9,9 @@ jobs:
       - run:
           name: Run unit tests with Maven
           command: mvn test
+      - run:
+          name: Run Checkstyle
+          command: mvn checkstyle:check
       - codecov/upload
 
 orbs:
