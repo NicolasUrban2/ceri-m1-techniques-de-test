@@ -80,6 +80,11 @@ public final class Pokemon extends PokemonMetadata {
 		return iv;
 	}
 
+	/**
+	 * Equals method.
+	 * @param o
+	 * @return boolean
+	 */
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
