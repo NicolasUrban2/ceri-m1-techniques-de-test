@@ -28,7 +28,7 @@ jobs:
           at: target/site
       - run:
           name: Install and configure dependencies
-          commands: |
+          command: |
             npm install -g --silent gh-pages@2.0.1
             git config user.email "ci-build@klukas.net"
             git config user.name "ci-build"
@@ -37,6 +37,7 @@ jobs:
           command: |
             echo "Deploying docs to gh-pages branch"
             gh-pages --dist apidocs
+
 orbs:
   codecov: codecov/codecov@4.0.1
 
