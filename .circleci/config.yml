@@ -21,7 +21,7 @@ jobs:
       - codecov/upload
   docs-deploy:
     docker:
-      - image: node:8.10.0
+      - image: cimg/node:21.6.2
     steps:
       - checkout
       - attach_workspace:
