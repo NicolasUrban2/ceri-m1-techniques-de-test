@@ -5,6 +5,12 @@ package fr.univavignon.pokedex.api;
  * 
  * @author fv
  */
+/**
+ * Represents the metadata of a Pokemon.
+ */
+/**
+ * Represents the metadata of a Pokemon.
+ */
 public class PokemonMetadata {
 
 	/** Pokemon index. **/
@@ -39,27 +45,47 @@ public class PokemonMetadata {
 		this.stamina = stamina;
 	}
 	
-	/** Index getter. **/
+	/**
+	 * Retrieves the index of the Pokemon.
+	 * 
+	 * @return The index of the Pokemon.
+	 */
 	public int getIndex() {
 		return index;
 	}
 	
-	/** Name getter.**/
+	/**
+	 * Retrieves the name of the Pokemon.
+	 * 
+	 * @return The name of the Pokemon.
+	 */
 	public String getName() {
 		return name;
 	}
 
-	/** Attack level getter. **/
+	/**
+	 * Retrieves the attack level of the Pokemon.
+	 * 
+	 * @return The attack level of the Pokemon.
+	 */
 	public int getAttack() {
 		return attack;
 	}
 
-	/** Defense level getter. **/
+	/**
+	 * Retrieves the defense level of the Pokemon.
+	 * 
+	 * @return The defense level of the Pokemon.
+	 */
 	public int getDefense() {
 		return defense;
 	}
 
-	/** Stamina level getter. **/
+	/**
+	 * Retrieves the stamina level of the Pokemon.
+	 * 
+	 * @return The stamina level of the Pokemon.
+	 */
 	public int getStamina() {
 		return stamina;
 	}

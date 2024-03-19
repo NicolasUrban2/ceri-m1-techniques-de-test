@@ -5,6 +5,9 @@ package fr.univavignon.pokedex.api;
  * 
  * @author fv
  */
+/**
+ * Represents a Pokemon with its attributes and behavior.
+ */
 public final class Pokemon extends PokemonMetadata {
 
 	/** Combat Point of the pokemon. **/
@@ -21,20 +24,20 @@ public final class Pokemon extends PokemonMetadata {
 
 	/** IV perfection percentage. **/
 	private final double iv;
-	
+
 	/**
 	 * Default constructor.
-	 * 
-	 * @param index Pokemon index.
-	 * @param name Pokemon name.
-	 * @param attack Attack level.
+	 *
+	 * @param index   Pokemon index.
+	 * @param name    Pokemon name.
+	 * @param attack  Attack level.
 	 * @param defense Defense level.
 	 * @param stamina Stamina level.
-	 * @param cp Pokemon cp.
-	 * @param hp Pokemon hp.
-	 * @param dust Required dust for upgrading this pokemon.
-	 * @param candy Required candy for upgrading this pokemon.
-	 * @param iv IV perfection percentage.
+	 * @param cp      Pokemon cp.
+	 * @param hp      Pokemon hp.
+	 * @param dust    Required dust for upgrading this pokemon.
+	 * @param candy   Required candy for upgrading this pokemon.
+	 * @param iv      IV perfection percentage.
 	 */
 	public Pokemon(
 			final int index,
@@ -55,35 +58,56 @@ public final class Pokemon extends PokemonMetadata {
 		this.iv = iv;
 	}
 
-	/** Combat Point getter getter. **/
+	/**
+	 * Retrieves the Combat Point (CP) of the Pokemon.
+	 *
+	 * @return The Combat Point (CP) of the Pokemon.
+	 */
 	public int getCp() {
 		return cp;
 	}
-	
-	/** HP getter. **/
+
+	/**
+	 * Retrieves the Hit Points (HP) of the Pokemon.
+	 *
+	 * @return The Hit Points (HP) of the Pokemon.
+	 */
 	public int getHp() {
 		return hp;
 	}
 
-	/** Dust getter. **/
+	/**
+	 * Retrieves the required dust for upgrading this Pokemon.
+	 *
+	 * @return The required dust for upgrading this Pokemon.
+	 */
 	public int getDust() {
 		return dust;
 	}
 
-	/** Candy getter. **/
+	/**
+	 * Retrieves the required candy for upgrading this Pokemon.
+	 *
+	 * @return The required candy for upgrading this Pokemon.
+	 */
 	public int getCandy() {
 		return candy;
 	}
-	
-	/** IV getter. **/
+
+	/**
+	 * Retrieves the IV (Individual Value) perfection percentage of the Pokemon.
+	 *
+	 * @return The IV (Individual Value) perfection percentage of the Pokemon.
+	 */
 	public double getIv() {
 		return iv;
 	}
 
 	/**
-	 * Equals method.
-	 * @param o
-	 * @return boolean
+	 * Checks if this Pokemon is equal to another object.
+	 *
+	 * @param o The object to compare.
+	 * @return True if the objects are equal, false otherwise.
 	 */
 	@Override
 	public boolean equals(Object o) {

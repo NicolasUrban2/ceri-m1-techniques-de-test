@@ -5,6 +5,9 @@ package fr.univavignon.pokedex.api;
  * 
  * @author fv
  */
+/**
+ * Represents a Pokemon Trainer.
+ */
 public class PokemonTrainer {
 
 	/** Trainer name. **/
@@ -28,18 +31,27 @@ public class PokemonTrainer {
 		this.team = team;
 		this.pokedex = pokedex;
 	}
-	
-	/** Name getter. **/
+
+	/**
+	 * Name getter.
+	 * @return The name of the trainer.
+	 */
 	public String getName() {
 		return name;
 	}
 
-	/** Team getter. **/
+	/**
+	 * Team getter.
+	 * @return The team of the trainer.
+	 */
 	public Team getTeam() {
 		return team;
 	}
-	
-	/** Pokedex getter. **/
+
+	/**
+	 * Pokedex getter.
+	 * @return The pokedex of the trainer.
+	 */
 	public IPokedex getPokedex() {
 		return pokedex;
 	}
