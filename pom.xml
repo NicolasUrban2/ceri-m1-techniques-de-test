@@ -90,6 +90,25 @@ http://maven.apache.org/maven-v4_0_0.xsd"
                     <linkXRef>false</linkXRef>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>com.github.bordertech.buildtools</groupId>
+                <artifactId>badger</artifactId>
+                <version>1.0.0</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>badges</goal>
+                        </goals>
+                        <configuration>
+                            <outputDir>${project.build.directory}/site/badges</outputDir>
+                            <inputFiles>
+                                <inputFile>${project.build.directory}/checkstyle-result.xml</inputFile>
+                            </inputFiles>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <testSourceDirectory>src/test/java</testSourceDirectory>
     </build>
