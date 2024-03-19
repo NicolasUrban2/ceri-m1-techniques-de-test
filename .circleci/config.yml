@@ -36,7 +36,7 @@ jobs:
           name: Deploy docs to gh-pages branch
           command: |
             echo "Deploying docs to gh-pages branch"
-            gh-pages --dist apidocs
+            gh-pages --dist target/site/apidocs
 
 orbs:
   codecov: codecov/codecov@4.0.1
