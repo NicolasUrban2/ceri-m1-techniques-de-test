@@ -27,11 +27,17 @@ jobs:
       - attach_workspace:
           at: target/site
       - run:
+          name: Disable jekyll builds
+          command: touch target/site/apidocs/.nojekyll
+      - run:
           name: Install and configure dependencies
           command: |
             npm install -g --silent gh-pages@2.0.1
-            git config user.email "ci-build@klukas.net"
-            git config user.name "ci-build"
+            git config user.email "nclsurban@gmail.com"
+            git config user.name "Nicolas Urban"
+      - add_ssh_keys:
+          fingerprints:
+            - "SHA256:8TrMWBKUslSx3IyPgUemEH7nxUIrL2fQgy/e6cptWOU"
       - run:
           name: Deploy docs to gh-pages branch
           command: |
