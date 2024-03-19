@@ -16,7 +16,7 @@ jobs:
           name: Make docs
           command: mvn javadoc:javadoc
       - persist_to_workspace:
-          root: target/site/apidocs
+          root: target/site
           paths: apidocs
       - codecov/upload
 
