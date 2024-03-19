@@ -19,7 +19,24 @@ jobs:
           root: target/site
           paths: apidocs
       - codecov/upload
-
+  docs-deploy:
+    docker:
+      - image: node:8.10.0
+    steps:
+      - checkout
+      - attach_workspace:
+          at: target/site
+      - run:
+          name: Install and configure dependencies
+          commands: |
+            npm install -g --silent gh-pages@2.0.1
+            git config user.email "ci-build@klukas.net"
+            git config user.name "ci-build"
+      - run:
+          name: Deploy docs to gh-pages branch
+          command: |
+            echo "Deploying docs to gh-pages branch"
+            gh-pages --dist apidocs
 orbs:
   codecov: codecov/codecov@4.0.1
 
@@ -28,6 +45,12 @@ workflows:
   build:
     jobs:
       - build:
+          filters:
+            branches:
+              only: master
+      - docs-deploy:
+          requires:
+            - build
           filters:
             branches:
               only: master
