@@ -17,3 +17,7 @@ Contient un objet IPokemonMetadataProvider et IPokemonFactory. Pour la méthode 
 
 ## Checkstyle
 [![Checkstyle](/target/site/badges/checkstyle-result.svg)](/target/checkstyle-result.xml)
+
+## Code review
+
+[RocketPokemonFactory](Revue_RocketPokemonFactory_URBAN_Nicolas.pdf)
