@@ -18,6 +18,9 @@ Contient un objet IPokemonMetadataProvider et IPokemonFactory. Pour la méthode 
 ## Checkstyle
 [![Checkstyle](/target/site/badges/checkstyle-result.svg)](/target/checkstyle-result.xml)
 
+## Documentation
+[Javadoc](https://nicolasurban2.github.io/ceri-m1-techniques-de-test/)
+
 ## Code review
 
 [RocketPokemonFactory](Revue_RocketPokemonFactory_URBAN_Nicolas.pdf)
